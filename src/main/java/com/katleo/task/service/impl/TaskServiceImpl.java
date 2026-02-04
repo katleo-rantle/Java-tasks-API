@@ -6,9 +6,11 @@ import com.katleo.task.domain.entity.TaskPriority;
 import com.katleo.task.domain.entity.TaskStatus;
 import com.katleo.task.repository.TaskRepository;
 import com.katleo.task.service.TaskService;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.util.List;
 
 @Service
 public class TaskServiceImpl implements TaskService {
@@ -32,5 +34,10 @@ public class TaskServiceImpl implements TaskService {
                 now
         );
         return taskRepository.save(task);
+    }
+
+    @Override
+    public List<Task> listTask() {
+        return taskRepository.findAll(Sort.by(Sort.Direction.ASC, "created"));
     }
 }
