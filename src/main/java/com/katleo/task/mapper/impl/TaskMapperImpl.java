@@ -5,7 +5,9 @@ import com.katleo.task.domain.dto.CreateTaskRequstDto;
 import com.katleo.task.domain.dto.TaskDto;
 import com.katleo.task.domain.entity.Task;
 import com.katleo.task.mapper.TaskMapper;
+import org.springframework.stereotype.Component;
 
+@Component
 public class TaskMapperImpl implements TaskMapper {
     @Override
     public CreateTaskRequest fromDto(CreateTaskRequstDto dto) {

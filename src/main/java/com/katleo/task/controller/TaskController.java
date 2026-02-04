@@ -26,11 +26,10 @@ public class TaskController {
     }
     @PostMapping
     public ResponseEntity<TaskDto> createTask(
-            @Valid @RequestBody CreateTaskRequstDto createTaskRequstDto
-            ){
-        CreateTaskRequest  createTaskRequest=  taskMapper.fromDto(createTaskRequstDto);
-        Task task = taskService.createTask(createTaskRequest);
-        TaskDto createdTaskDto = taskMapper.toDto(task);
+            @Valid @RequestBody CreateTaskRequstDto createTaskRequstDto){
+        CreateTaskRequest  taskToCreate =  taskMapper.fromDto(createTaskRequstDto);
+        Task createdTask = taskService.createTask(taskToCreate);
+        TaskDto createdTaskDto = taskMapper.toDto(createdTask);
         return new ResponseEntity<>(createdTaskDto, HttpStatus.CREATED);
     }
 }
