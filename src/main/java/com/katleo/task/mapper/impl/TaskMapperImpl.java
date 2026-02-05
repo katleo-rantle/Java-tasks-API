@@ -1,8 +1,10 @@
 package com.katleo.task.mapper.impl;
 
 import com.katleo.task.domain.CreateTaskRequest;
+import com.katleo.task.domain.UpdateTaskRequest;
 import com.katleo.task.domain.dto.CreateTaskRequstDto;
 import com.katleo.task.domain.dto.TaskDto;
+import com.katleo.task.domain.dto.UpdateTaskRequstDto;
 import com.katleo.task.domain.entity.Task;
 import com.katleo.task.mapper.TaskMapper;
 import org.springframework.stereotype.Component;
@@ -28,6 +30,17 @@ public class TaskMapperImpl implements TaskMapper {
                 task.getDueDate(),
                 task.getPriority(),
                 task.getStatus()
+        );
+    }
+
+    @Override
+    public UpdateTaskRequest fromDto(UpdateTaskRequstDto dto) {
+        return new UpdateTaskRequest(
+                dto.title(),
+                dto.description(),
+                dto.dueDate(),
+                dto.status(),
+                dto.priority()
         );
     }
 }
